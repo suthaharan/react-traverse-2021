@@ -6,7 +6,7 @@
 - ReactJS is a library for building interfaces.
 - Gives you a structure for the view layer
 - React is the V in the MVC
-- JS - Dynamic markup
+- JSX - Dynamic markup
 - Interactive UI's with Virtual DOM
 - Performance and testing
 - Good handle on data types, variables, functions, loops, promises, async programming, array methods like forEach() & map(), fetch API and making HTTP requests
@@ -33,11 +33,12 @@ export default class Header extends React.Component {
 ```
 
 #### Components and State
+* Components can be classes or functions
 * Components can take in "props" which are attributes
 ```
 <Header title="Sample title">
 ```
-* Components can have states which is an object that determines how a componentt renders and behaves
+* Components can have states which is an object that determines how a component renders and behaves
 * "App" or "global" state refers to a state that is available to the entire UI and not just to a single component
 * Prior to react 16.8 we had to use class based components to use state. Now, we use functional components with hooks
 * React hooks are functions that let us hook into React state and lifecycle features from function components
@@ -54,4 +55,8 @@ $ cd task-tracker
 $ npm start
 ```
 * Chrome extension: React developer tools is a recommendation to view the states/components/props and other variables. If you run the application from the build folder, react dev tools would indicate that you are running the production build
-
+* If Emmet doesn't work, go to the bottom of vscode editor and change javascript to javascript react
+* Flow of ReactJS app
+-- public/index.html
+---- src/index.js (has reference to root app component which gets replaced)
+----
