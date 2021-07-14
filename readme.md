@@ -44,7 +44,8 @@ export default class Header extends React.Component {
 * React hooks are functions that let us hook into React state and lifecycle features from function components
 * * useState - Returns a stateful value and a function to update it
 * * useEffect - Perform side effects in function components 
-
+* There are some naming conventions that you need to be aware of when writing attributes to JSX elements such as "className" for "class", "htmlFor" for "for" etc.
+* If you do not want to have a grouping of elements inside div for JSX element, you can just use fragment or empty angle brackets as in <> ... </>
 
 #### Starting a react project
 ```
@@ -56,7 +57,157 @@ $ npm start
 ```
 * Chrome extension: React developer tools is a recommendation to view the states/components/props and other variables. If you run the application from the build folder, react dev tools would indicate that you are running the production build
 * If Emmet doesn't work, go to the bottom of vscode editor and change javascript to javascript react
+* In vscode, search for and setup ES7 React/Redux/GraphQL/React-Native snippets plugin. It has a bunch of snippets/components which makes it a quick start. For e.g. rafce
+```
+rafce (component)
+impt (to import prop types)
+rfce
+
+```
+
 * Flow of ReactJS app
 -- public/index.html
 ---- src/index.js (has reference to root app component which gets replaced)
 ----
+
+
+* Writing the app.js in function and class style
+```javascript
+
+// Function style
+import Header from './components/Header'
+
+const App = () => {
+  const appTitle = "My Tasker!";
+  return (
+    <div className="container">
+      <Header />
+     <h1>{appTitle}</h1>
+     <h1>Welcome to ReactJS Beginner!</h1>
+    </div>
+  );
+}
+export default App;
+
+
+// Class style
+import React from 'react'
+import Header from './components/Header'
+class App extends React.component{
+  render(){
+    const appTitle = "My Tasker!";
+    return (
+      <div className="container">
+        <Header />
+      <h1>{appTitle}</h1>
+      <h1>Welcome to ReactJS Beginner!</h1>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+###### Props, defaultProps and PropTypes
+* You can pass props to components. Props are nothing but attributes that are set to elements. You can also defined default prop values.
+```javascript
+const Header = (props) => {
+    return (
+        <header>
+        <h2>Hello {props.title}</h2>
+        </header>
+    )
+}
+
+Header.defaultProps = {
+    title: "Track Tasks!"
+}
+
+export default Header
+```
+
+* Prop Types is something similar to setting property types. It makes your code robust.
+```javascript
+import PropTypes from 'prop-types'
+
+const Header = (props) => {
+    return (
+        <header>
+        <h2>Hello {props.title}</h2>
+        </header>
+    )
+}
+
+Header.defaultProps = {
+    title: "Track Tasks!"
+}
+
+Header.propTypes = {
+    title: PropTypes.string,
+}
+
+export default Header
+```
+
+##### Styling in Components
+* CSS within react can be done using stylesheets or using style components or by using direct css inline within components
+* For inline CSS, you will use {{ color: 'red', backgroundColor:'black'}}
+* Notice the above line to see how the CSS property names exclude usage of hyphens and instead use camel casing for naming inside react
+* Or use a variable in the component with the above values and use a single curly braces and have this variable called in the relevant place
+```javascript
+import PropTypes from 'prop-types'
+
+const Button = ({color, text}) => {
+    return <button style={{backgroundColor: color}} className='btn'>{text}</button>
+}
+
+Button.defaultProps = {
+    text: "Add",
+    color: "steelBlue"
+}
+
+Button.propTypes = {
+    text: PropTypes.string,
+    color: PropTypes.string
+}
+export default Button
+
+```
+
+* Simple component using map to parse through an array
+```javascript
+const tasks = [
+    {
+        id: 1,
+        text: 'Doctor Appointment',
+        day: 'Jan 1st at 1:40am',
+        reminder: true
+    },
+    {
+        id: 2,
+        text: 'Meeting at School',
+        day: 'Mar 1st at 2:40pm',
+        reminder: true
+    },
+    {
+        id: 3,
+        text: 'Grocery Shopping',
+        day: 'Apr 1st at 5:40pm',
+        reminder: false
+    }
+]
+
+const Tasks = () => {
+    return (
+        <>
+          {tasks.map((t) => (
+              <h3 key={t.id}>{t.text}</h3>
+          ))}  
+        </>
+    )
+}
+
+export default Tasks
+```
+-- You can use fontawesome or install react icons ($ npm i react-actions)
