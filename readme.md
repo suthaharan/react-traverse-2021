@@ -10,6 +10,7 @@
 - Interactive UI's with Virtual DOM
 - Performance and testing
 - Good handle on data types, variables, functions, loops, promises, async programming, array methods like forEach() & map(), fetch API and making HTTP requests
+- state gets passed DOWN and actions get passed UP
 
 #### Difference between class and function component styles
 ```
@@ -210,4 +211,4 @@ const Tasks = () => {
 
 export default Tasks
 ```
--- You can use fontawesome or install react icons ($ npm i react-actions)
+-- You can use fontawesome or install react icons ($ npm i react-icons) which allows you to use multiple icon sets
