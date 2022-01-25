@@ -5,6 +5,9 @@ import AddTask from './components/AddTask'
 
 const App = () => {
   const appTitle = "Ace Tasker!";
+  // To toggle the form
+  const [showAddTask, setShowAddTask] = useState(true);
+
   const [tasks, setTasks] = useState(
     [{
       id: 1,
@@ -46,11 +49,15 @@ const toggleReminder = (id) => {
 
   return (
     <div className="container">
-      <Header title={appTitle} />
-      <AddTask onAdd={addTask} />
+
+      <Header title={appTitle} onAddClick={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+      
+      { showAddTask && <AddTask onAdd={addTask} /> }
+      
       {tasks.length > 0 ?
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
       : ( 'No Tasks To Show!' )}
+
     </div>
   );
 }

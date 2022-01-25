@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const AddTask = (props) => {
+const AddTask = ({ onAdd }) => {
 
      // Component level state
      const [text, setText] = useState('');
@@ -16,7 +16,7 @@ const AddTask = (props) => {
                return;
           }
 
-          props.onAdd({text, day, reminder})
+          onAdd({text, day, reminder})
           setText('')
           setDay('')
           setReminder(false)    
