@@ -1,16 +1,26 @@
+# React Crash Course by Traversy
+
 ### References
   * TraversyMedia [https://www.youtube.com/watch?v=w7ejDZ8SWv8&t=802s]
   * https://github.com/bradtraversy/react-crash-2021
+  * Spread operator vs Rest operator [https://www.freecodecamp.org/news/javascript-rest-vs-spread-operators/]
+
+
+### What you will learn in the project
+  * How to create components, reuse components with different props
+  * How to pass properties and destructure the object
+  * How to set propTypes
+  * How to create defaultProps
 
 ### Notes
-- ReactJS is a library for building interfaces.
+- ReactJS is a library for building interfaces. It is a front-end framework.
 - Gives you a structure for the view layer
 - React is the V in the MVC
-- JSX - Dynamic markup
-- Interactive UI's with Virtual DOM
-- Performance and testing
+- JSX - Dynamic markup (Javascript Syntax Extension). Javascript written as HTML (syntax looks like HTML, a syntactic sugar)
+- Interactive UI's with Virtual DOM. You can make use of resuable components.
+- Performance and testing benefits. Much easier to work on project with teams. All states are mutable.
 - Good handle on data types, variables, functions, loops, promises, async programming, array methods like forEach() & map(), fetch API and making HTTP requests
-- state gets passed DOWN and actions get passed UP
+- "STATE" gets passed DOWN and "ACTION" gets passed UP. Reusable components with their own state.
 
 #### Difference between class and function component styles
 ```
@@ -35,7 +45,7 @@ export default class Header extends React.Component {
 
 #### Components and State
 * Components can be classes or functions
-* Components can take in "props" which are attributes
+* Components can take in "props" which are attributes 
 ```
 <Header title="Sample title">
 ```
@@ -58,7 +68,11 @@ $ npm start
 ```
 * Chrome extension: React developer tools is a recommendation to view the states/components/props and other variables. If you run the application from the build folder, react dev tools would indicate that you are running the production build
 * If Emmet doesn't work, go to the bottom of vscode editor and change javascript to javascript react
-* In vscode, search for and setup ES7 React/Redux/GraphQL/React-Native snippets plugin. It has a bunch of snippets/components which makes it a quick start. For e.g. rafce
+* To cleanup the code, remove logo.svg/app.css/app.test.js/setuptests.js
+* In vscode, search for and setup ES7 React/Redux/GraphQL/React-Native snippets plugin. It has a bunch of snippets/components which makes it a quick start. It has snippets for component syntax For e.g. rafce
+* PropTypes are used to make your code robust and to catch errors 
+* You can use Style Components for styling react components
+* 
 ```
 rafce (component)
 impt (to import prop types)
@@ -111,7 +125,7 @@ export default App;
 ```
 
 ###### Props, defaultProps and PropTypes
-* You can pass props to components. Props are nothing but attributes that are set to elements. You can also defined default prop values.
+* You can pass props to components. Props are nothing but attributes that are set to elements. You can also define default prop values.
 ```javascript
 const Header = (props) => {
     return (
@@ -153,9 +167,21 @@ export default Header
 
 ##### Styling in Components
 * CSS within react can be done using stylesheets or using style components or by using direct css inline within components
-* For inline CSS, you will use {{ color: 'red', backgroundColor:'black'}}
+* For inline CSS, you will use style={{ color: 'red', backgroundColor:'black'}}
 * Notice the above line to see how the CSS property names exclude usage of hyphens and instead use camel casing for naming inside react
-* Or use a variable in the component with the above values and use a single curly braces and have this variable called in the relevant place
+* Or use a variable in the component with the above values and use a single curly braces and have this variable called in the relevant place as in 
+```javascript
+
+<header style={headingStyle}>
+</header>
+...
+
+const headingStyle ={
+    color: 'red',
+    backgroundColor: 'black'
+}
+```
+
 ```javascript
 import PropTypes from 'prop-types'
 
@@ -212,3 +238,42 @@ const Tasks = () => {
 export default Tasks
 ```
 -- You can use fontawesome or install react icons ($ npm i react-icons) which allows you to use multiple icon sets
+```javascript
+import Task from './Task'
+
+const Tasks = ({tasks, onDelete, onToggle}) => {
+
+    return (
+        <>
+          {tasks.map((t) => (
+              <Task key={t.id} task={t} onDelete={onDelete} onToggle={onToggle} />
+          ))}  
+        </>
+    )
+}
+
+export default Tasks
+
+```
+```javascript
+import {FaTimes} from 'react-icons/fa'
+
+function Task({ task, onDelete, onToggle }) {
+    return (
+        <div className={`task ${task.reminder ? 'reminder': ''}`} onDoubleClick={() => onToggle(task.id)}>
+            <h3>{task.text}<FaTimes style={{ color: 'red', cursor: 'hand' }} onClick={() => onDelete(task.id)}/></h3>
+            <p>{task.day}</p>
+        </div>
+    )
+}
+
+export default Task
+```
+
+
+
+```javascript
+```
+
+```javascript
+```

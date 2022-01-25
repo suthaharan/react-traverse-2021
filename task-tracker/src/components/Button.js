@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types'
 
 const Button = ({color, text}) => {
+
+    // onClick event - since it is a component it is not going to have same click
+    // const onClick = (e) => {
+    //     console.log('click', e)
+    // }
+
     return <button style={{backgroundColor: color}} className='btn'>{text}</button>
 }
 
 Button.defaultProps = {
     text: "Add",
-    color: "steelBlue"
+    color: "steelblue"
 }
 
 Button.propTypes = {
