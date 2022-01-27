@@ -269,7 +269,32 @@ function Task({ task, onDelete, onToggle }) {
 
 export default Task
 ```
+* for build, stop the server and run 
+$ npm run build (this will create a build folder)
 
+* for production build to run the application from the build folder
+$ npm i -g serve (basic http server)
+$ serve -s build -p 8000 
+
+* to mock data you can make use of json server
+$ npm i json-server
+When you inspect the React component in the browser, you will notice that the message would have changed to show that the build is off of production server (icon will be blue color)
+
+
+Modify package.json to include the below line
+"server": "json-server --watch db.json --port 5000"
+
+** You can also try using https://jsonplaceholder.typicode.com/ if you do not want to setup json server
+
+$ npm run server (from installation folder to start json server)
+$ npm start (to start react dev server)
+
+Now try to move the tasks array into db.json. Make sure to have double quotes around key value pairs. Json Server as such would generate ID's for the records that gets created. 
+
+Now, you can see the tasks array in the json server when you type in http://localhost:5000/tasks
+
+
+# useEffect - for creating side effects
 
 
 ```javascript
@@ -277,3 +302,11 @@ export default Task
 
 ```javascript
 ```
+
+
+
+# 
+
+$ npm i react-router-dom
+
+In app.js, we are returning a container div class. We will create new file Footer.js
