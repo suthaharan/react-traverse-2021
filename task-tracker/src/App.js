@@ -4,7 +4,7 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import About from './components/About'
 import Footer from './components/Footer'
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 const App = () => {
   const appTitle = "Ace Tasker!";
@@ -117,10 +117,6 @@ function Home(){
     <Router>
       <div className="container">
       <Header title={appTitle} onAddClick={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-      <ul>
-        <li><Link to="/home">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-      </ul>
         <Routes>
             <Route path="home" element={<Home />} />
             <Route path="about" element={<About />} />
