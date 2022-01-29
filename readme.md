@@ -1,7 +1,9 @@
 # React Crash Course by Traversy
 
 ### References
-  * TraversyMedia [https://www.youtube.com/watch?v=w7ejDZ8SWv8&t=802s]
+  * TraversyMedia 
+    * [https://www.youtube.com/watch?v=w7ejDZ8SWv8&t=802s]
+    * [https://www.youtube.com/watch?v=k2Zk5cbiZhg]
   * https://github.com/bradtraversy/react-crash-2021
   * Spread operator vs Rest operator [https://www.freecodecamp.org/news/javascript-rest-vs-spread-operators/]
 

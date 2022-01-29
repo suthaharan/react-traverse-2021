@@ -4,7 +4,7 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import About from './components/About'
 import Footer from './components/Footer'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 
 const App = () => {
   const appTitle = "Ace Tasker!";
@@ -105,25 +105,29 @@ const toggleReminder = async (id) => {
 function Home(){
   return (
           <>
-          <Header title={appTitle} onAddClick={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-            { showAddTask && <AddTask onAdd={addTask} /> }
+           { showAddTask && <AddTask onAdd={addTask} /> }
             {tasks.length > 0 ?
               <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
               : ( 'No Tasks To Show!' )}      
           </>
-
   )
 }
 
   return (
     <Router>
       <div className="container">
+      <Header title={appTitle} onAddClick={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+      <ul>
+        <li><Link to="/home">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+      </ul>
         <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/about" element={<About />} />
+            <Route path="home" element={<Home />} />
+            <Route path="about" element={<About />} />
         </Routes>
-      </div>
+        
       <Footer />
+      </div>
     </Router>
   );
 }
